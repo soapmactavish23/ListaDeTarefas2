@@ -17,7 +17,7 @@ public class TarefaActivity extends AppCompatActivity {
 
     private TextInputEditText editTarefa;
     private Tarefa tarefaAtual;
-    private  Db db = new Db(TarefaActivity.this);
+    private Db db = new Db(TarefaActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class TarefaActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.itemSalvar:
                 String texto = editTarefa.getText().toString();
-                if(!texto.isEmpty()){ // Edição
+                if(tarefaAtual != null){ // Edição
 
                     Tarefa tarefa = new Tarefa();
                     tarefa.setNomeTarefa(texto);
@@ -64,7 +64,7 @@ public class TarefaActivity extends AppCompatActivity {
                         ).show();
                         finish();
                     }
-                }else{//Salvar
+                }else{
                     if(texto.equals("")){
                         Toast.makeText(
                                 TarefaActivity.this,
